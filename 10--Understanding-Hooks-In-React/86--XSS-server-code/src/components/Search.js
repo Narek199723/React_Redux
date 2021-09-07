@@ -28,6 +28,8 @@ const Search = () => {
       <div key={result.pageid} className="item">
         <div className="content">
           <div className="header">{result.title}</div>
+          {/* //& React developer's team hid it from because it has a security problems, every time we take a string from a third party library even from wikipedia api we can be introducing security hole in our application, that kind of security hole is called XSS attack, XSS stands for Cross side scripting attack    */}
+          {/* //&  so we can even provide it there is a new folder which contains possiblitiy of doing that */}
           <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span>
         </div>
       </div>

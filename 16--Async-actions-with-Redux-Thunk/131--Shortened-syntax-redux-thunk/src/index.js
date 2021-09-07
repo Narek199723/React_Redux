@@ -6,10 +6,11 @@ import thunk from 'redux-thunk';
 
 import App from './components/App';
 import reducers from './reducers';
+// &  We need applyMiddleware for connecting thunk with a redux store
 
 const store = createStore(reducers, applyMiddleware(thunk));
 
-ReactDOM.render(
+ReactDOM.render( 
   <Provider store={store}>
     <App />
   </Provider>,

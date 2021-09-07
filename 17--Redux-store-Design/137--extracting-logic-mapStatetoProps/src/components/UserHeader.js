@@ -1,28 +1,49 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { fetchUser } from '../actions';
+// import React from 'react';
+// import { connect } from 'react-redux';
+// import { fetchUser } from '../actions';
 
-class UserHeader extends React.Component {
-  componentDidMount() {
-    this.props.fetchUser(this.props.userId);
+// class UserHeader extends React.Component {
+//   componentDidMount() {
+//     this.props.fetchUser(this.props.userId);
+//   }
+
+//   render() {
+//     const { user } = this.props;
+
+//     if (!user) {
+//       return null;
+//     }
+
+//     return <div className="header">{user.name}</div>;
+//   }
+// }
+
+// const mapStateToProps = (state, ownProps) => {
+//   return { user: state.users.find(user => user.id === ownProps.userId) };
+// };
+
+// export default connect(
+//   mapStateToProps,
+//   { fetchUser }
+// )(UserHeader);
+
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchUser } from "../actions";
+
+const UserHeader = (props) => {
+  useEffect(() => {
+    props.fetchUser(props.userId);
+  });
+  const { user } = this.props;
+
+  if (!user) {
+    return null;
   }
 
-  render() {
-    const { user } = this.props;
-
-    if (!user) {
-      return null;
-    }
-
-    return <div className="header">{user.name}</div>;
-  }
-}
-
-const mapStateToProps = (state, ownProps) => {
-  return { user: state.users.find(user => user.id === ownProps.userId) };
+  return <div className="header">{user.name}</div>;
 };
-
-export default connect(
-  mapStateToProps,
-  { fetchUser }
-)(UserHeader);
+const mapStateToProps = (state, ownProps) => {
+  return { user: state.users.find((user) => user.id === ownProps.userId) };
+};
+export default connect(null, { fetchUser })(UserHeader);

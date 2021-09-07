@@ -2,6 +2,8 @@ import React from 'react';
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const renderedOptions = options.map((option) => {
+    
+    // ^ So this means that if we click on a certain div it won't show on the bottom afterwards
     if (option.value === selected.value) {
       return null;
     }

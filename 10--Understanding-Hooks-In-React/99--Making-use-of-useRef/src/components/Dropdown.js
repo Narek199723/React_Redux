@@ -2,12 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 
 const Dropdown = ({ options, selected, onSelectedChange }) => {
   const [open, setOpen] = useState(false);
+  // & useRef allows us to get a direct reference to a DOM element 
   const ref = useRef();
 
   useEffect(() => {
     document.body.addEventListener(
       "click",
       (event) => {
+        // & ref.current is going to give us the reference of that div 
         if (ref.current.contains(event.target)) {
           return;
         }
